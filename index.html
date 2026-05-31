@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>REACT - Propriedades</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Repositório React</h1>
+    <p>Resumo dos principais conceitos de React</p>
+  </header>
+
+  <nav class="sidebar">
+    <ul>
+      <li><a href="#fundamentos">Fundamentos</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#arrays">Arrays</a></li>
+      <li><a href="#strings">Strings</a></li>
+      <li><a href="#condicionais">Condicionais</a></li>
+    </ul>
+  </nav>
+  <main>
+        <section id="fundamentos">
+          <h2>Fundamentos React e JSX</h2>
+
+          <article>
+            <h3>Component</h3>
+
+            <p>
+              Um componente é uma função que retorna elementos da interface. É a unidade básica de construção de aplicações React.
+            </p>
+
+            <pre><code class="language-jsx">
+function Welcome() {
+  return &lt;h1&gt;Olá Mundo&lt;/h1&gt;;
+}
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>Props</h3>
+            <p>
+              Props são propriedades usadas para passar dados de um componente pai para um componente filho.
+            </p>
+            <pre><code class="language-jsx">
+function Welcome(props) {
+  return &lt;h1&gt;Olá, {props.nome}&lt;/h1&gt;;
+}
+
+&lt;Welcome nome="Vitor" /&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>useState</h3>
+            <p>
+              Hook que permite criar e atualizar estados em componentes funcionais.
+            </p>
+            <pre><code class="language-jsx">
+import { useState } from "react";
+
+function Contador() {
+  const [numero, setNumero] = useState(0);
+
+  return (
+    &lt;button onClick={() => setNumero(numero + 1)}&gt;
+      {numero}
+    &lt;/button&gt;
+  );
+}
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>JSX</h3>
+            <p>
+              Sintaxe semelhante ao HTML usada para descrever a interface no React.
+            </p>
+            <pre><code class="language-jsx">const elemento = &lt;h1&gt;Olá, mundo!&lt;/h1&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>Fragment</h3>
+            <p>
+              Uma sintaxe que permite agrupar uma lista de filhos sem adicionar nós extras ao
+DOM (HTML gerado).
+            </p>
+            <pre><code class="language-jsx">
+&lt;&gt;
+  &lt;h1&gt;Título&lt;/h1&gt;
+  &lt;p&gt;Texto&lt;/p&gt;
+&lt;/&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>className</h3>
+            <p>
+              Atributo utilizado para aplicar classes CSS em elementos React.
+            </p>
+            <pre><code class="language-jsx">
+&lt;h1 className="titulo"&gt;Olá&lt;/h1&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>onClick</h3>
+            <p>
+              Evento executado quando o usuário clica em um elemento.
+            </p>
+            <pre><code class="language-jsx">
+&lt;button onClick={() => alert("Clicou!")}&gt;
+  Clique
+&lt;/button&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>onChange</h3>
+            <p>
+              Evento acionado quando o valor de um campo é alterado.
+            </p>
+            <pre><code class="language-jsx">
+&lt;input onChange={(e) => console.log(e.target.value)} /&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>value</h3>
+            <p>
+              Define ou acessa o valor de um campo de formulário.
+            </p>
+            <pre><code class="language-jsx">
+&lt;input value="React" /&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>placeholder</h3>
+            <p>
+              Texto exibido dentro de um campo enquanto ele está vazio.
+            </p>
+            <pre><code class="language-jsx">
+&lt;input placeholder="Digite seu nome" /&gt;
+            </code></pre>
+          </article>
+
+        </section>
+
+        <section id="eventos">
+          <h2>Manipulação de Inputs e Eventos</h2>
+
+          <article>
+            <h3>event</h3>
+            <p>
+              É o objeto gerado automaticamente pelo navegador quando um evento ocorre (como
+um clique ou digitação), contendo informações detalhadas sobre o que aconteceu.
+            </p>
+            <pre><code class="language-jsx">
+function gerenciarClique(event) { console.log(event); }
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>e.target.value </h3>
+            <p>
+              Uma propriedade do objeto de evento (e) usada para acessar o valor atual de um
+elemento de entrada (input) no momento em que o evento é disparado.
+            </p>
+            <pre><code class="language-jsx">
+&lt;input onChange={(e) => console.log(e.target.value)} /&gt;
+            </code></pre>
+          </article>
+
+
+          <article>
+            <h3>preventDefault()</h3>
+            <p>
+              Um método do objeto de evento utilizado para cancelar o comportamento padrão do
+navegador, muito comum para evitar que a página recarregue ao enviar um formulário.
+            </p>
+            <pre><code class="language-jsx">
+function enviar(e) { e.preventDefault(); }
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>input type="text"</h3>
+            <p>
+              Um elemento de formulário padrão usado para criar um campo de texto de linha única,
+onde o usuário pode digitar dados.
+            </p>
+            <pre><code class="language-jsx">
+&lt;input type="text" name="usuario" /&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>button</h3>
+            <p>
+              Elemento de interface que define um botão clicável, utilizado para acionar ações ou
+submeter dados dentro do componente.
+            </p>
+            <pre><code class="language-jsx">
+&lt;button onClick={handleClick}&gt;Enviar&lt;/button&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>textarea</h3>
+            <p>
+              Um elemento de entrada de dados que permite ao usuário digitar blocos maiores de
+texto em múltiplas linhas.
+            </p>
+            <pre><code class="language-jsx">
+&lt;textarea placeholder="Digite sua mensagem"&gt;&lt;/textarea&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>select</h3>
+            <p>
+              Elemento utilizado para criar uma lista suspensa (menu do tipo dropdown), permitindo
+que o usuário escolha uma ou mais opções pré-definidas.
+            </p>
+            <pre><code class="language-jsx">
+&lt;select&gt;
+  &lt;option value="opcao1"&gt;Opção 1&lt;/option&gt;
+  &lt;option value="opcao2"&gt;Opção 2&lt;/option&gt;
+&lt;/select&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>checked</h3>
+            <p>
+              Um atributo booleano utilizado em inputs do tipo checkbox ou radio para definir ou
+ler se o elemento está marcado ou não.
+            </p>
+            <pre><code class="language-jsx">
+&lt;input type="checkbox" checked={maarcado}/&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>onSubmit</h3>
+            <p>
+              Um manipulador de eventos aplicado ao elemento de formulário (<form>) que é
+disparado quando o usuário tenta enviar os dados (seja clicando em um botão ou
+apertando Enter).
+            </p>
+            <pre><code class="language-jsx">
+&lt;form onSubmit={lidarComEnvio}&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>disabled</h3>
+            <p>
+              Um atributo booleano que, quando verdadeiro, desativa a interatividade de um
+elemento (como inputs ou botões), impedindo ações do usuário.
+            </p>
+            <pre><code class="language-jsx">
+&lt;button disabled&gt;Enviar&lt;/button&gt;
+            </code></pre>
+          </article>
+
+        </section>
+
+        <section id="arrays">
+          <h2>Arrays e Renderização</h2>
+
+          <article>
+            <h3>map()</h3>
+            <p> Método que cria um novo array com os resultados da aplicação de uma função a cada elemento do array original. </p>
+            <pre><code class="language-jsx">
+const numeros = [1, 2, 3];
+const quadrados = numeros.map(num => num * num);
+console.log(quadrados); // [1, 4, 9]
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>filter()</h3>
+            <p> Método que cria um novo array com os elementos que atendem a uma condição específica. </p>
+            <pre><code class="language-jsx">
+const numeros = [1, 2, 3, 4, 5];
+const pares = numeros.filter(num => num % 2 === 0);
+console.log(pares); // [2, 4]
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>find()</h3>
+            <p> Método que retorna o primeiro elemento que atende a uma condição específica. </p>
+            <pre><code class="language-jsx">
+const numeros = [1, 2, 3, 4, 5];
+const primeiroPar = numeros.find(num => num % 2 === 0);
+console.log(primeiroPar); // 2
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>push()</h3>
+            <p> Método que adiciona um ou mais elementos ao final de um array. </p>
+            <pre><code class="language-jsx">
+const numeros = [1, 2, 3];
+numeros.push(4);
+console.log(numeros); // [1, 2, 3, 4]
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>spread operator (...)</h3>
+            <p> Permite expandir os elementos de um array em outro array ou em uma lista de argumentos. </p>
+            <pre><code class="language-jsx">
+const numeros = [1, 2, 3];
+const outrosNumeros = [...numeros, 4, 5];
+console.log(outrosNumeros); // [1, 2, 3, 4, 5]
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>length</h3>
+            <p> Propriedade que retorna o número de elementos em um array. </p>
+            <pre><code class="language-jsx">
+const numeros = [1, 2, 3];
+console.log(numeros.length); // 3
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>index</h3>
+            <p> Propriedade que retorna o índice do elemento atual no array. </p>
+            <pre><code class="language-jsx">
+const numeros = [10, 20, 30];
+numeros.forEach((num, index) => {
+  console.log(`Número: ${num}, Índice: ${index}`);
+});
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>key</h3>
+            <p> Propriedade utilizada pelo React para identificar quais elementos foram alterados, adicionados ou removidos. </p>
+            <pre><code class="language-jsx">
+const itens = ['Maçã', 'Banana', 'Laranja'];
+const lista = itens.map((item, index) =&gt; (
+  &lt;li key={index}&gt;{item}&lt;/li&gt;
+));
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>includes()</h3>
+            <p> Método que verifica se um elemento específico está presente em um array. </p>
+            <pre><code class="language-jsx">
+const frutas = ['Maçã', 'Banana', 'Laranja'];
+console.log(frutas.includes('Banana')); // true
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>sort()</h3>
+            <p> Método que ordena os elementos de um array. </p>
+            <pre><code class="language-jsx">
+const numeros = [3, 1, 4, 1, 5];
+numeros.sort((a, b) => a - b);
+console.log(numeros); // [1, 1, 3, 4, 5]
+            </code></pre>
+          </article>
+
+        </section>
+
+        <section id="strings">
+          <h2>Strings e Dados</h2>
+
+          <article>
+            <h3>toUpperCase()</h3>
+            <p> Método que converte uma string para maiúsculas. </p>
+            <pre><code class="language-jsx">
+const texto = "olá, mundo!";
+console.log(texto.toUpperCase()); // "OLÁ, MUNDO!"
+            </code></pre>
+
+            <h3>toLowerCase()</h3>
+            <p> Método que converte uma string para minúsculas. </p>
+            <pre><code class="language-jsx">
+const texto = "OLÁ, MUNDO!";
+console.log(texto.toLowerCase()); // "olá, mundo!"
+            </code></pre>
+
+            <h3>trim()</h3>
+            <p> Método que remove espaços em branco do início e do final de uma string. </p>
+            <pre><code class="language-jsx">
+const texto = "  olá, mundo!  ";
+console.log(texto.trim()); // "olá, mundo!"
+            </code></pre>
+
+            <h3>split()</h3>
+            <p> Método que divide uma string em um array de substrings. </p>
+            <pre><code class="language-jsx">
+const texto = "olá, mundo!";
+console.log(texto.split(",")); // ["olá", " mundo!"]
+            </code></pre>
+
+            <h3>replace()</h3>
+            <p> Método que substitui uma substring por outra. </p>
+            <pre><code class="language-jsx">
+const texto = "olá, mundo!";
+console.log(texto.replace("mundo", "universo")); // "olá, universo!"
+            </code></pre>
+
+            <h3>template literals</h3>
+            <p> Sintaxe que permite criar strings com interpolação de variáveis. </p>
+            <pre><code class="language-jsx">
+const nome = "João";
+const idade = 30;
+console.log(`Olá, meu nome é ${nome} e eu tenho ${idade} anos.`); // "Olá, meu nome é João e eu tenho 30 anos."
+            </code></pre>
+
+            <h3>parseInt()</h3>
+            <p> Função que converte uma string em um número inteiro. </p>
+            <pre><code class="language-jsx">
+const numStr = "123";
+console.log(parseInt(numStr)); // 123
+            </code></pre>
+
+            <h3>parseFloat()</h3>
+            <p> Função que converte uma string em um número de ponto flutuante. </p>
+            <pre><code class="language-jsx">
+const numStr = "123.45";
+console.log(parseFloat(numStr)); // 123.45
+            </code></pre>
+
+            <h3>Number()</h3>
+            <p> Função que converte uma string em um número. </p>
+            <pre><code class="language-jsx">
+const numStr = "123";
+console.log(Number(numStr)); // 123
+            </code></pre>
+
+            <h3>Boolean()</h3>
+            <p> Função que converte uma valor em um booleano. </p>
+            <pre><code class="language-jsx">
+console.log(Boolean("true")); // true
+console.log(Boolean("false")); // true
+            </code></pre>
+          </article>
+        </section>
+
+        <section id="condicionais">
+          <h2>Condicionais e Controle</h2>
+
+          <article>
+            <h3>if / else</h3>
+            <p> Estrutura de controle que executa um bloco de código se uma condição for verdadeira. </p>
+            <pre><code class="language-jsx">
+const idade = 18;
+if (idade >= 18) {
+  console.log("Você é maior de idade.");
+} else {
+  console.log("Você é menor de idade.");
+}
+            </code></pre>
+          </article>
+
+          <article>
+            <h3> Operador ternário ? :</h3>
+            <p> Permite renderização condicional de forma mais concisa. </p>
+            <pre><code class="language-jsx">
+const idade = 18;
+const mensagem = idade >= 18 ? "Você é maior de idade." : "Você é menor de idade.";
+console.log(mensagem);
+            </code></pre>
+          </article>
+
+          <article>
+            <h3> && no JSX  </h3>
+            <p> Permite renderização condicional de forma mais concisa. </p>
+            <pre><code class="language-jsx">
+const idade = 18;
+idade >= 18 && console.log("Você é maior de idade.");
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>return</h3>
+            <p> Palavra-chave que encerra a execução de uma função e retorna um valor. </p>
+            <pre><code class="language-jsx">
+function somar(a, b) {
+  return a + b;
+}
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>function</h3>
+            <p> Palavra-chave que define uma função. </p>
+            <pre><code class="language-jsx">
+function saudar(nome) {
+  return `Olá, ${nome}!`;
+}
+            </code></pre>
+          </article>
+
+          <article>
+            <h3> Arrow Function => </h3>
+            <p> Sintaxe mais concisa para definir funções. </p>
+            <pre><code class="language-jsx">
+const saudar = (nome) => `Olá, ${nome}!`;
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>const</h3>
+            <p> Palavra-chave que define uma variável constante. </p>
+            <pre><code class="language-jsx">
+const PI = 3.14;
+PI = 3.14159; // Erro: não é possível reatribuir um valor a uma variável constante
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>let</h3>
+            <p> Palavra-chave que define uma variável de escopo de bloco. </p>
+            <pre><code class="language-jsx">
+let contador = 0;
+contador++;
+console.log(contador); // 1
+            </code></pre>
+          </article>
+
+          <article>
+            <h3>export default</h3>
+            <p> Palavra-chave que exporta uma função, classe ou variável como o valor padrão de um módulo. </p>
+            <pre><code class="language-jsx">
+const saudar = (nome) => `Olá, ${nome}!`;
+export default saudar;
+            </code></pre>
+          </article>
+
+        </section>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-jsx.min.js"></script>
+</body>
+
+</html>
